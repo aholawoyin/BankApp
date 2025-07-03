@@ -39,6 +39,17 @@ public class Customer {
     @ManyToMany(mappedBy = "customers")
     private Set<Transaction> transactions; // Set of transactions associated with the customer
 
+    // Constructors
+    public Customer() {
+    }
+
+    public Customer(String name, String email, String phoneNumber, String address) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }
@@ -93,6 +104,22 @@ public class Customer {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    
+
+    @Override
+    public String toString() {
+        return "Customer{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", email='" + email + '\''
+                + ", phoneNumber='" + phoneNumber + '\''
+                + ", address='" + address + '\''
+                + ", createdAt='" + createdAt + '\''
+                + ", updatedAt='" + updatedAt + '\''
+                + ", account=" + account
+                + '}';
     }
 
 }

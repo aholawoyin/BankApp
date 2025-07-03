@@ -49,6 +49,17 @@ public class Account {
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private String updatedAt;
 
+    // Constructors
+    public Account() {
+    }
+
+    public Account(String accountNumber, String accountHolderName, double balance, AccountType accountType) {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = balance;
+        this.accountType = accountType;
+    }
+
     public Long getId() {
         return id;
     }

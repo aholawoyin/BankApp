@@ -8,16 +8,16 @@ import jakarta.persistence.Id;
 
 @Entity
 public class AccountType {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true,length= 50)
+    @Column(nullable = false, unique = true, length = 50)
     private String typeName;
 
     @Column(length = 255)
     private String description;
-    
 
     // Getters and Setters
     public Long getId() {
@@ -42,6 +42,23 @@ public class AccountType {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    // Constructor
+    public AccountType() {
+    }
+
+    public AccountType(String typeName, String description) {
+        this.typeName = typeName;
+        this.description = description;
+    }
+    @Override
+    public String toString() {
+        return "AccountType{" +
+                "id=" + id +
+                ", typeName='" + typeName + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 
 }

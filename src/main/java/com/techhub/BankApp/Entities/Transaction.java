@@ -38,11 +38,22 @@ public class Transaction {
 
     @ManyToMany
     @JoinTable(
-        name = "customer_transaction",
-        joinColumns = @JoinColumn(name = "transaction_id"),
-        inverseJoinColumns = @JoinColumn(name = "customer_id")
+            name = "customer_transaction",
+            joinColumns = @JoinColumn(name = "transaction_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id")
     )
     private Set<Customer> customers; // Set of customers associated with the transaction
+
+    // Constructors
+    public Transaction() {
+    }
+
+    public Transaction(String transactionType, double amount, String transactionDate, String description) {
+        this.transactionType = transactionType;
+        this.amount = amount;
+        this.transactionDate = transactionDate;
+        this.description = description;
+    }
 
     // Getters and Setters
     public Long getId() {
@@ -99,6 +110,21 @@ public class Transaction {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{"
+                + "id=" + id
+                + ", transactionType='" + transactionType + '\''
+                + ", amount=" + amount
+                + ", transactionDate='" + transactionDate + '\''
+                + ", description='" + description + '\''
+                + ", createdAt='" + createdAt + '\''
+                + ", updatedAt='" + updatedAt + '\''
+                + ", accounts=" + accounts
+                + ", customers=" + customers
+                + '}';
     }
 
 }
