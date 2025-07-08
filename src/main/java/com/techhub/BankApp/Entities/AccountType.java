@@ -52,13 +52,14 @@ public class AccountType {
         this.typeName = typeName;
         this.description = description;
     }
+
     @Override
     public String toString() {
-        return "AccountType{" +
-                "id=" + id +
-                ", typeName='" + typeName + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "AccountType{"
+                + "id=" + id
+                + ", typeName='" + typeName + '\''
+                + ", description='" + description + '\''
+                + '}';
     }
 
 }

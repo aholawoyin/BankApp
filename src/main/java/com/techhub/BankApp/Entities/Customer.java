@@ -1,7 +1,6 @@
 package com.techhub.BankApp.Entities;
 
 import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -106,7 +105,13 @@ public class Customer {
         this.updatedAt = updatedAt;
     }
 
-    
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 
     @Override
     public String toString() {

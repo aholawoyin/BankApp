@@ -2,6 +2,8 @@ package com.techhub.BankApp.Entities;
 
 import java.util.List;
 
+import org.hibernate.annotations.ManyToAny;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,9 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-
 @Entity
 public class Account {
 
@@ -30,7 +31,7 @@ public class Account {
     @Column
     private double balance = 0.0;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private AccountType accountType;
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
@@ -100,6 +101,14 @@ public class Account {
         this.accountType = accountType;
     }
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }
@@ -114,6 +123,14 @@ public class Account {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
     @Override
